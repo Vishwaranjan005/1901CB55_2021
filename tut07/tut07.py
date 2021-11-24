@@ -45,8 +45,6 @@ def feedback_not_submitted():
 
 
 	st_info_df = pd.read_csv('studentinfo.csv',usecols=['Name', 'Roll No', 'email','aemail','contact'])
-
-	print(len(not_subm))
 	not_subm_sheet=[]
 	for i in range(0,len(not_subm)):
 		x =not_subm[i][0]
@@ -66,10 +64,8 @@ def feedback_not_submitted():
 			l=l+['nan','nan','nan','nan']
 		not_subm_sheet.append(l)
 
-	not_subm_sheet_df = pd.DataFrame(not_subm_sheet)
-	filename= os.getcwd()
-	filename=filename+'/course_feedback_remaining.xlsx'
+	not_subm_sheet_df = pd.DataFrame(not_subm_sheet,columns=['rollno','register_sem','schedule_sem','subno','Name','email','aemail','contact'])
 		
-	not_subm_sheet_df.to_excel('course_feedback_remaining.xlsx')
+	not_subm_sheet_df.to_excel('course_feedback_remaining.xlsx',index=False)
 
 feedback_not_submitted()
